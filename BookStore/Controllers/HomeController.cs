@@ -13,7 +13,7 @@ namespace BookStore.Controllers
     {
         public IActionResult GetDashboardBooks()
         {
-            return new List<Book>
+            return Ok();
         }
     }
 }

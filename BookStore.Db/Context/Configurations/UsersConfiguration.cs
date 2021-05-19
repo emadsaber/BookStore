@@ -7,16 +7,17 @@ using System.Text;
 
 namespace BookStore.Db.Context.Configurations
 {
-    public class BooksConfiguration : IEntityTypeConfiguration<Book>
+    public class UsersConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<Book> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(x => x.Id)
                    .HasDefaultValueSql("(NEWID())");
 
-            builder.Property(x => x.Title).IsRequired().HasMaxLength(255);
-            builder.Property(x => x.Description).IsRequired().HasMaxLength(3000);
-            builder.Property(x => x.Rating).IsRequired().HasColumnType("decimal(2,1)");
+            builder.Property(x => x.Title).HasMaxLength(10);
+            builder.Property(x => x.FirstName).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.LastName).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.PasswordHash).IsRequired().HasMaxLength(300);
             builder.Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("(GETDATE())");
 
             builder.HasKey(x => x.Id);
