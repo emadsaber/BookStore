@@ -5,14 +5,16 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore", "BookStore\BookStore.csproj", "{D5FA1C5B-3F1C-4484-8A2D-B0EE02CA48E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Models", "BookStore.Models\BookStore.Models.csproj", "{06E809BF-3566-419B-8B98-0EB5A5CA52C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Models", "BookStore.Models\BookStore.Models.csproj", "{06E809BF-3566-419B-8B98-0EB5A5CA52C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Db", "BookStore.Db\BookStore.Db.csproj", "{673F8D6B-4E22-4ABF-BBAD-B30B278B38A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Db", "BookStore.Db\BookStore.Db.csproj", "{673F8D6B-4E22-4ABF-BBAD-B30B278B38A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{249AE15E-7711-4316-85F0-CBF314F81565}"
 	ProjectSection(SolutionItems) = preProject
 		Tasks.txt = Tasks.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Core", "BookStore.Core\BookStore.Core.csproj", "{078C33C5-42C6-4362-B236-3C7FC1FEB684}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{673F8D6B-4E22-4ABF-BBAD-B30B278B38A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{673F8D6B-4E22-4ABF-BBAD-B30B278B38A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{673F8D6B-4E22-4ABF-BBAD-B30B278B38A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{078C33C5-42C6-4362-B236-3C7FC1FEB684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{078C33C5-42C6-4362-B236-3C7FC1FEB684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{078C33C5-42C6-4362-B236-3C7FC1FEB684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{078C33C5-42C6-4362-B236-3C7FC1FEB684}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
