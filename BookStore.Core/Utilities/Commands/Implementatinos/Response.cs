@@ -8,8 +8,7 @@ namespace BookStore.Core.Utilities.Commands.Implementations
     public class Response
     {
         #region props
-
-        public object Data { get; set; }
+        
         public bool Success { get; set; }
         public ErrorItemCollection Errors { get; set; }
 
@@ -55,7 +54,7 @@ namespace BookStore.Core.Utilities.Commands.Implementations
 
         #region props
 
-        public new T Data { get; set; }
+        public T Data { get; set; }
 
         #endregion
     }

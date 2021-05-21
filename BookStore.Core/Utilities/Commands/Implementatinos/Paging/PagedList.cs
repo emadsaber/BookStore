@@ -8,7 +8,7 @@ namespace BookStore.Core.Utilities.Commands.Implementatinos.Paging
     {
         public PagedList(List<T> data, int pageNumber, int pagesCount, int pageSize, int totalCount)
         {
-            Data = data;
+            PagedData = data;
             PageNumber = pageNumber;
             PagesCount = pagesCount;
             PageSize = pageSize;
@@ -19,7 +19,7 @@ namespace BookStore.Core.Utilities.Commands.Implementatinos.Paging
         public int PageSize { get; } 
         public int PagesCount { get; }
         public int TotalCount { get; }
-        public List<T> Data { get; }
+        public List<T> PagedData { get; }
 
         #region helpers
 

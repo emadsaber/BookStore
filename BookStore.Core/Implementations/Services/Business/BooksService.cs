@@ -36,7 +36,7 @@ namespace BookStore.Core.Implementations.Services.Business
             }
 
             var booksPaged = await booksRepo.GetPagedAsync(x => true, 1);
-            var mappedBooks = Mapper.Map<List<BookDto>>(booksPaged.Data);
+            var mappedBooks = Mapper.Map<List<BookDto>>(booksPaged.PagedData);
             var mappedBooksPaged = PagedList<BookDto>.CopyFrom(booksPaged, mappedBooks);
 
             return Response.SuccessResponse(mappedBooksPaged);

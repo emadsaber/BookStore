@@ -1,5 +1,7 @@
 ﻿using BookStore.Core.Contracts.Services.Business;
+using BookStore.Core.Utilities.Commands.Implementatinos.Paging;
 using BookStore.Core.Utilities.Commands.Implementations;
+using BookStore.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,11 +22,11 @@ namespace BookStore.Controllers
             this.booksService = booksService;
         }
         [HttpGet("GetDashboardBooks")]
-        public async Task<IActionResult> GetDashboardBooks()
+        public async Task<Response<PagedList<BookDto>>> GetDashboardBooks()
         {
             var books = await booksService.GetDashboardBooks(new Request<int>(10));
             
-            return Ok(books.Data);
+            return books;
         }
     }
 }
