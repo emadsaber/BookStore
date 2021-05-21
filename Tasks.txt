@@ -1,11 +1,10 @@
 [OK]	- Separate models and DTOs in a project
 [OK]	- Create a searate project to apply migrations on
-		- Create mock to test UI without need of database
-		- Create repositories to handle data operations
-		- Create services to be injected separately from repositories
+[OK]	- Create repositories to handle data operations
+[OK]	- Create services to be injected separately from repositories
+[OK]	- Add ApiResponse class to handle API replies for UI requests
+[OK]	- Add automapper to map data from services to APIs
 		- Add bootstrap for UI
-		- Add ApiResponse class to handle API replies for UI requests
 		- Create UI helpers for ApiResponse handling
-		- Add automapper to map data from services to APIs
 		- Add ready made components to UI (SyncFusion or any other components lib)
 		- Add AppSettings (DefaultPageSize)

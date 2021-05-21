@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace BookStore
 {
@@ -26,6 +28,23 @@ namespace BookStore
             BookStoreCoreRegistry.Register(services, Configuration);
 
             services.AddControllersWithViews();
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Description = "APIs for Book Store application",
+                    Title = "Book Store APIs",
+                    Version = "1.0",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Emad Saber",
+                        Email = "emadsaber89@gmail.com",
+                        Url = new Uri("https://www.linkedin.com/in/emadsaber2013/"),
+                    },
+                });
+
+            });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -47,7 +66,11 @@ namespace BookStore
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Book Store APIs");
+            });
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
