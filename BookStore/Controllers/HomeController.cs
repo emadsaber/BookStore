@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BookStore.Core.Contracts.Services.Business;
+using BookStore.Core.Utilities.Commands.Implementations;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,9 +13,18 @@ namespace BookStore.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        public IActionResult GetDashboardBooks()
+        private readonly IBooksService booksService;
+
+        public HomeController(IBooksService booksService)
         {
-            return Ok();
+            this.booksService = booksService;
+        }
+        [HttpGet("GetDashboardBooks")]
+        public async Task<IActionResult> GetDashboardBooks()
+        {
+            var books = await booksService.GetDashboardBooks(new Request<int>(10));
+            
+            return Ok(books.Data);
         }
     }
 }

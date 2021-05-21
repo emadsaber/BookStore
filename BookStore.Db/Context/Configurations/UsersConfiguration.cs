@@ -19,6 +19,7 @@ namespace BookStore.Db.Context.Configurations
             builder.Property(x => x.LastName).IsRequired().HasMaxLength(100);
             builder.Property(x => x.PasswordHash).IsRequired().HasMaxLength(300);
             builder.Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("(GETDATE())");
+            builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
 
             builder.HasKey(x => x.Id);
         }

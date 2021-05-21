@@ -18,8 +18,16 @@ namespace BookStore.Db.Context.Configurations
             builder.Property(x => x.Description).IsRequired().HasMaxLength(3000);
             builder.Property(x => x.Rating).IsRequired().HasColumnType("decimal(2,1)");
             builder.Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("(GETDATE())");
+            builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
+            builder.Property(x => x.Website).HasMaxLength(500);
+            builder.Property(x => x.ISBN).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.Publisher).IsRequired().HasMaxLength(200);
+            builder.Property(x => x.Subtitle).HasMaxLength(500);
+            builder.Property(x => x.PublishedAt).HasColumnType("datetime2(7)");
 
             builder.HasKey(x => x.Id);
+
+            builder.ToTable("Books");
         }
     }
 }

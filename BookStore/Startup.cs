@@ -1,3 +1,4 @@
+using BookStore.Core.Registry;
 using BookStore.Db.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,9 +23,7 @@ namespace BookStore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connStr = this.Configuration.GetConnectionString("BookStoreDB");
-            
-            services.AddDbContext<BookStoreDbContext>(options => options.UseSqlServer(connStr));
+            BookStoreCoreRegistry.Register(services, Configuration);
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

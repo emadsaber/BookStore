@@ -11,6 +11,5 @@ namespace BookStore.Models.DTOs
         public string Description { get; set; }
         public decimal Rating { get; set; }
         public List<AuthorDto> Authors { get; set; }
-        public List<ReviewDto> Reviews { get; set; }
     }
 }

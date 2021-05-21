@@ -8,3 +8,4 @@
 		- Create UI helpers for ApiResponse handling
 		- Add automapper to map data from services to APIs
 		- Add ready made components to UI (SyncFusion or any other components lib)
+		- Add AppSettings (DefaultPageSize)

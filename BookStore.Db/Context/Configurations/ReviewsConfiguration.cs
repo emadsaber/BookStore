@@ -18,6 +18,7 @@ namespace BookStore.Db.Context.Configurations
             builder.Property(x => x.UserId).IsRequired();
             builder.Property(x => x.Rating).IsRequired().HasColumnType("decimal(2,1)");
             builder.Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("(GETDATE())");
+            builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
 
             builder.HasKey(x => x.Id);
         }

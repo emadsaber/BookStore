@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookStore.Core\BookStore.Core.csproj" />
     <ProjectReference Include="..\BookStore.Db\BookStore.Db.csproj" />
   </ItemGroup>
 
