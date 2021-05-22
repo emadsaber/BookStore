@@ -26,10 +26,14 @@ namespace BookStore.Core.Utilities.Commands.Implementations
             return new Request<T>(data, null);
         }
 
+        public static Request<T> Compose<T>()
+        {
+            return new Request<T>(default, default);
+        }
+
         public bool Validate()
         {
             if (this == null) return false;
-            if (this.Data == null) return false;
             return true;
         }
         #endregion

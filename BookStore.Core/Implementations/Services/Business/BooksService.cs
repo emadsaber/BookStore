@@ -28,7 +28,7 @@ namespace BookStore.Core.Implementations.Services.Business
 
         #region IBooksService
 
-        public async Task<Response<PagedList<BookDto>>> GetDashboardBooks(Request<int> request)
+        public async Task<Response<PagedList<BookDto>>> GetDashboardBooks(Request request)
         {
             if (!request.Validate())
             {

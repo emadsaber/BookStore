@@ -21,10 +21,10 @@ namespace BookStore.Controllers
         {
             this.booksService = booksService;
         }
-        [HttpGet("GetDashboardBooks")]
-        public async Task<Response<PagedList<BookDto>>> GetDashboardBooks()
+        [HttpPost("GetDashboardBooks")]
+        public async Task<Response<PagedList<BookDto>>> GetDashboardBooks(Request request)
         {
-            var books = await booksService.GetDashboardBooks(new Request<int>(10));
+            var books = await booksService.GetDashboardBooks(request);
             
             return books;
         }

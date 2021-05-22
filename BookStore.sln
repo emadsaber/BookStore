@@ -14,7 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		Tasks.txt = Tasks.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Core", "BookStore.Core\BookStore.Core.csproj", "{078C33C5-42C6-4362-B236-3C7FC1FEB684}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Core", "BookStore.Core\BookStore.Core.csproj", "{078C33C5-42C6-4362-B236-3C7FC1FEB684}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleData", "SampleData", "{CC712F9A-3A3D-4CA4-9E5F-1905D505F415}"
+	ProjectSection(SolutionItems) = preProject
+		SampleData\Authors.sql = SampleData\Authors.sql
+		SampleData\SampleBooks.sql = SampleData\SampleBooks.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +47,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC712F9A-3A3D-4CA4-9E5F-1905D505F415} = {249AE15E-7711-4316-85F0-CBF314F81565}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {173787BC-69C7-4A4A-973D-076E1FE45FF7}
