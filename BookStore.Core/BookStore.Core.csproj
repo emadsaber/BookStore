@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\Commands\Contracts\" />
-    <Folder Include="Utilities\Commands\Implementatinos\Enums\" />
+    <Compile Remove="Utilities\Commands\Contracts\**" />
+    <Compile Remove="Utilities\Commands\Implementatinos\Enums\**" />
+    <EmbeddedResource Remove="Utilities\Commands\Contracts\**" />
+    <EmbeddedResource Remove="Utilities\Commands\Implementatinos\Enums\**" />
+    <None Remove="Utilities\Commands\Contracts\**" />
+    <None Remove="Utilities\Commands\Implementatinos\Enums\**" />
   </ItemGroup>
 
   <ItemGroup>
