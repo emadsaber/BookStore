@@ -4,11 +4,11 @@ namespace BookStore.Core.Utilities.Commands.Implementations
 {
     public class ApiRequest
     {
+        public ApiRequest() { }
         #region props
 
         public DateTime RequestedAt { get; set; }
         public Guid? UserId { get; set; }
-        public object Data { get; set; }
 
         #endregion
 
@@ -39,11 +39,10 @@ namespace BookStore.Core.Utilities.Commands.Implementations
     public class ApiRequest<T> : ApiRequest
     {
         #region ctor
-
+        public ApiRequest() { }
         public ApiRequest(T data, Guid? userId = null)
         {
             Data = data;
-            base.Data = data;
             UserId = userId;
             RequestedAt = DateTime.Now;
         }
@@ -52,7 +51,7 @@ namespace BookStore.Core.Utilities.Commands.Implementations
 
         #region props
         
-        public new T Data { get; set; }
+        public T Data { get; set; }
         
         #endregion
     }

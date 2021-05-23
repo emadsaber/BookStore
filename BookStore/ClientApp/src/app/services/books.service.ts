@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { ApiResponse } from '../models/bases/ApiResponse';
 import { PagedList } from '../models/bases/PagedList';
@@ -15,10 +16,14 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BooksService {
-
+  
   constructor(private http: HttpClient) { }
 
   getDashboardBooks(): Observable<ApiResponse<PagedList<BookDto>>> {
     return this.http.post<ApiResponse<PagedList<BookDto>>>('/api/Home/GetDashboardBooks', {}, httpOptions);
+  }
+
+  getBookDetails(id: Guid): Observable<ApiResponse<BookDto>> {
+    return this.http.get<ApiResponse<BookDto>>(`api/Home/GetBookDetails?bookId=${id}`);
   }
 }

@@ -22,9 +22,17 @@ namespace BookStore.Core.Contracts.Repositories.Bases
             this.DbSet.Add(entity);
         }
 
-        public T Get(Guid id)
+        public T Get<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes)
         {
-            return this.DbSet.Find(id);
+            var query = this.DbSet.AsQueryable();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return query.FirstOrDefault(x => x.Id == id);
         }
 
         public async Task<List<T>> Get(Expression<Func<T, bool>> filter)
@@ -46,24 +54,48 @@ namespace BookStore.Core.Contracts.Repositories.Bases
             return PagedList<T>.GetPaged(data, pageNumber, pageSize, pagesCount, totalCount);
         }
 
-        public async Task<T> GetAsync(Guid id)
+        public async Task<T> GetAsync<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes)
         {
-            return await this.DbSet.FindAsync(id);
+            var query = this.DbSet.AsQueryable();
+            if(includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return await query.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public T GetWithNoTracking(Guid id)
+        public T GetWithNoTracking<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes)
         {
-            return this.DbSet.AsNoTracking().FirstOrDefault(x => x.Id == id);
+            var query = this.DbSet.AsNoTracking();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return query.FirstOrDefault(x => x.Id == id);
         }
 
-        public async Task<T> GetWithNoTrackingAsync(Guid id)
+        public async Task<T> GetWithNoTrackingAsync<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes)
         {
-            return await this.DbSet.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            var query = this.DbSet.AsNoTracking();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return await query.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public void SoftDelete(Guid id)
         {
-            var entity = this.Get(id);
+            var entity = this.Get<object>(id);
             if(entity != default)
             {
                 entity.IsDeleted = true;
@@ -72,7 +104,7 @@ namespace BookStore.Core.Contracts.Repositories.Bases
 
         public async Task SoftDeleteAsync(Guid id)
         {
-            var entity = await this.GetAsync(id);
+            var entity = await this.GetAsync<object>(id);
             if (entity != default)
             {
                 entity.IsDeleted = true;

@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardBookComponent } from './components/dashboard-book/dashboard-book.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     DashboardComponent,
     DashboardBookComponent,
     BookDetailsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,8 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'details/:id', component: BookDetailsComponent },
+      { path: '**', component: PageNotFoundComponent},
     ])
   ],
   providers: [],

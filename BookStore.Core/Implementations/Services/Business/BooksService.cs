@@ -6,6 +6,7 @@ using BookStore.Core.Utilities.Commands.Implementatinos.Paging;
 using BookStore.Core.Utilities.Commands.Implementations;
 using BookStore.Db.Context;
 using BookStore.Models.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -42,6 +43,20 @@ namespace BookStore.Core.Implementations.Services.Business
             return ApiResponse.SuccessResponse(mappedBooksPaged);
         }
 
+        public async Task<ApiResponse<BookDto>> GetBookDetails(ApiRequest<Guid> request)
+        {
+            if (!request.Validate())
+            {
+                return ApiResponse.InvalidRequest<BookDto>();
+            }
+
+            var book = await booksRepo.GetAsync<object>(request.Data, x => x.Authors, x => x.Reviews);
+            
+            var bookDto = Mapper.Map<BookDto>(book);
+
+            return ApiResponse.SuccessResponse(bookDto);
+        }
+        
         #endregion
     }
 }
