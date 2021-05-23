@@ -9,6 +9,7 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardBookComponent } from './components/dashboard-book/dashboard-book.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { DashboardBookComponent } from './components/dashboard-book/dashboard-bo
     HomeComponent,
     DashboardComponent,
     DashboardBookComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
