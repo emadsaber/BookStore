@@ -1,0 +1,14 @@
+<div class="card" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="/images/book.png" class="card-img" alt="default book">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><a [routerLink]="['/details']">{{ book.title }}</a></h5>
+        <p class="card-text">{{ book.subtitle }}</p>
+        <p class="card-text"><small class="text-muted">{{ book.publishedAt | date }}</small></p>
+      </div>
+    </div>
+  </div>
+</div>

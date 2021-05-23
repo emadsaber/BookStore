@@ -9,6 +9,6 @@ namespace BookStore.Core.Contracts.Services.Business
 {
     public interface IBooksService : IService
     {
-        Task<Response<PagedList<BookDto>>> GetDashboardBooks(Request request);
+        Task<ApiResponse<PagedList<BookDto>>> GetDashboardBooks(ApiRequest request);
     }
 }

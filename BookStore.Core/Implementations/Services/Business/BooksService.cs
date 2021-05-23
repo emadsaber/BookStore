@@ -28,18 +28,18 @@ namespace BookStore.Core.Implementations.Services.Business
 
         #region IBooksService
 
-        public async Task<Response<PagedList<BookDto>>> GetDashboardBooks(Request request)
+        public async Task<ApiResponse<PagedList<BookDto>>> GetDashboardBooks(ApiRequest request)
         {
             if (!request.Validate())
             {
-                return Response.InvalidRequest<PagedList<BookDto>>();
+                return ApiResponse.InvalidRequest<PagedList<BookDto>>();
             }
 
             var booksPaged = await booksRepo.GetPagedAsync(x => true, 1);
             var mappedBooks = Mapper.Map<List<BookDto>>(booksPaged.PagedData);
             var mappedBooksPaged = PagedList<BookDto>.CopyFrom(booksPaged, mappedBooks);
 
-            return Response.SuccessResponse(mappedBooksPaged);
+            return ApiResponse.SuccessResponse(mappedBooksPaged);
         }
 
         #endregion

@@ -2,7 +2,7 @@
 
 namespace BookStore.Core.Utilities.Commands.Implementations
 {
-    public class Request
+    public class ApiRequest
     {
         #region props
 
@@ -14,19 +14,19 @@ namespace BookStore.Core.Utilities.Commands.Implementations
 
         #region helpers
 
-        public static Request<T> Compose<T>(T data, Guid? userId)
+        public static ApiRequest<T> Compose<T>(T data, Guid? userId)
         {
-            return new Request<T>(data, userId);
+            return new ApiRequest<T>(data, userId);
         }
 
-        public static Request<T> Compose<T>(T data)
+        public static ApiRequest<T> Compose<T>(T data)
         {
-            return new Request<T>(data, null);
+            return new ApiRequest<T>(data, null);
         }
 
-        public static Request<T> Compose<T>()
+        public static ApiRequest<T> Compose<T>()
         {
-            return new Request<T>(default, default);
+            return new ApiRequest<T>(default, default);
         }
 
         public bool Validate()
@@ -36,11 +36,11 @@ namespace BookStore.Core.Utilities.Commands.Implementations
         }
         #endregion
     }
-    public class Request<T> : Request
+    public class ApiRequest<T> : ApiRequest
     {
         #region ctor
 
-        public Request(T data, Guid? userId = null)
+        public ApiRequest(T data, Guid? userId = null)
         {
             Data = data;
             base.Data = data;

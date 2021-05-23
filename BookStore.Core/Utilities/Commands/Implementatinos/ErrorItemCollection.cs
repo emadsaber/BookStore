@@ -66,19 +66,6 @@ namespace BookStore.Core.Utilities.Commands.Implementatinos
 
             return collection;
         }
-        public static ErrorItemCollection Create(Dictionary<string,string> controlsErrors)
-        {
-            if (controlsErrors == null) return null;
-
-            var collection = new ErrorItemCollection();
-
-            foreach (var ctrlErr in controlsErrors)
-            {
-                collection.Add(ErrorItem.Create(ctrlErr.Key, ctrlErr.Value));
-            }
-
-            return collection;
-        }
         #endregion
     }
 }

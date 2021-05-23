@@ -22,7 +22,7 @@ namespace BookStore.Controllers
             this.booksService = booksService;
         }
         [HttpPost("GetDashboardBooks")]
-        public async Task<Response<PagedList<BookDto>>> GetDashboardBooks(Request request)
+        public async Task<ApiResponse<PagedList<BookDto>>> GetDashboardBooks(ApiRequest request)
         {
             var books = await booksService.GetDashboardBooks(request);
             
