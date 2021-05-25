@@ -1,0 +1,7 @@
+<div *ngFor="let author of authors">
+  <small class="text-muted">
+    {{author.fullName}}
+    <span *ngIf="author.rating > 0">[{{author.rating}} star(s)]</span>
+    <span *ngIf="!author.rating">[Not rated]</span>
+  </small>
+</div>

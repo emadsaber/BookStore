@@ -66,7 +66,18 @@ namespace BookStore.Core.Contracts.Repositories.Bases
             }
             return await query.FirstOrDefaultAsync(x => x.Id == id);
         }
-
+        public async Task<T> GetAsync(Guid id, params string[] includes)
+        {
+            var query = this.DbSet.AsQueryable();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return await query.FirstOrDefaultAsync(x => x.Id == id);
+        }
         public T GetWithNoTracking<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes)
         {
             var query = this.DbSet.AsNoTracking();
@@ -114,6 +125,45 @@ namespace BookStore.Core.Contracts.Repositories.Bases
         public void Update(T modifiedEntity)
         {
             this.DbSet.Update(modifiedEntity);
+        }
+
+        public async Task<T> GetWithNoTrackingAsync(Guid id, params string[] includes)
+        {
+            var query = this.DbSet.AsNoTracking();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return await query.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public T Get(Guid id, params string[] includes)
+        {
+            var query = this.DbSet.AsQueryable();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return query.FirstOrDefault(x => x.Id == id);
+        }
+
+        public T GetWithNoTracking(Guid id, params string[] includes)
+        {
+            var query = this.DbSet.AsNoTracking();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return query.FirstOrDefault(x => x.Id == id);
         }
     }
 }

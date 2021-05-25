@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BookDto } from '../../models/dtos/BookDto';
+import { BookDto } from '../../../models/dtos/BookDto';
 
 @Component({
   selector: 'app-dashboard-book',

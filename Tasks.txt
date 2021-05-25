@@ -4,7 +4,12 @@
 [OK]	- Create services to be injected separately from repositories
 [OK]	- Add ApiResponse class to handle API replies for UI requests
 [OK]	- Add automapper to map data from services to APIs
-		- Add bootstrap for UI
-		- Create UI helpers for ApiResponse handling
+[OK]	- Add bootstrap for UI
+[OK]	- Create UI helpers for ApiRequest handling
 		- Add ready made components to UI (SyncFusion or any other components lib)
 		- Add AppSettings (DefaultPageSize)
+		- Add images for books and users (how to store them with data (FileStream, or binary))
+		- Create the rating UI control
+		- Create Repository includes with all Get methods
+		- Authentication and Authorization (Auth0, ...)
+		- Sign in with Google, Github, Facebook , LinkedIn

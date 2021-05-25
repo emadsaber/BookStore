@@ -5,9 +5,11 @@ using BookStore.Core.Implementations.Services.Business.Bases;
 using BookStore.Core.Utilities.Commands.Implementatinos.Paging;
 using BookStore.Core.Utilities.Commands.Implementations;
 using BookStore.Db.Context;
+using BookStore.Models.Domain;
 using BookStore.Models.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BookStore.Core.Implementations.Services.Business
@@ -50,7 +52,10 @@ namespace BookStore.Core.Implementations.Services.Business
                 return ApiResponse.InvalidRequest<BookDto>();
             }
 
-            var book = await booksRepo.GetAsync<object>(request.Data, x => x.Authors, x => x.Reviews);
+            var book = await booksRepo.GetAsync(request.Data, 
+                nameof(Book.Authors), 
+                nameof(Book.Reviews), 
+                $"{nameof(Book.Reviews)}.{nameof(Review.User)}");
             
             var bookDto = Mapper.Map<BookDto>(book);
 

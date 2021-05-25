@@ -1,4 +1,7 @@
 import { Guid } from "guid-typescript";
+import { AuthorDto } from "./AuthorDto";
+import { ReviewDto } from "./ReviewDto";
+
 
 export class BookDto {
   id: Guid;
@@ -11,4 +14,6 @@ export class BookDto {
   publishedAt: Date;
   website: string;
   pagesCount: number;
+  authors: AuthorDto[];
+  reviews: ReviewDto[];
 }

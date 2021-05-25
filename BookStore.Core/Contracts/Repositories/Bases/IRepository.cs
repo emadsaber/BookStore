@@ -18,9 +18,13 @@ namespace BookStore.Core.Contracts.Repositories.Bases
         void SoftDelete(Guid id);
         Task SoftDeleteAsync(Guid id);
         Task<T> GetAsync<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes);
+        Task<T> GetAsync(Guid id, params string[] includes);
         Task<T> GetWithNoTrackingAsync<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes);
+        Task<T> GetWithNoTrackingAsync(Guid id, params string[] includes);
         T Get<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes);
+        T Get(Guid id, params string[] includes);
         Task<PagedList<T>> GetPagedAsync(Expression<Func<T, bool>> filter, int pageNumber);
         T GetWithNoTracking<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes);
+        T GetWithNoTracking(Guid id, params string[] includes);
     }
 }
