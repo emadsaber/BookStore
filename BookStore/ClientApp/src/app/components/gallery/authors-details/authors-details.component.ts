@@ -13,7 +13,6 @@ export class AuthorsDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.authors);
   }
 
 }

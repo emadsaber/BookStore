@@ -12,7 +12,7 @@ import { DashboardBookComponent } from './components/gallery/dashboard-book/dash
 import { BookDetailsComponent } from './components/gallery/book-details/book-details.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { AuthorsDetailsComponent } from './components/gallery/authors-details/authors-details.component';
-import { BookReviewsComponent } from './gallery/book-reviews/book-reviews.component';
+import { BookReviewsComponent } from './components/gallery/book-reviews/book-reviews.component';
 
 @NgModule({
   declarations: [

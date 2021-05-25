@@ -1,1 +1,13 @@
-<p>book-reviews works!</p>
+<div *ngIf="reviews">
+  <div class="h4 mt-2">Reviews</div>
+  <div class="row" *ngFor="let review of reviews">
+    <div class="col-1">
+      <img src="/images/default_user.png" class="w-100" />
+    </div>
+    <div class="col-3 mt-3 small reviewerName" *ngIf="review.user">{{ review.user.fullName }}</div>
+    <div class="col-8 mt-3"> {{ review.rating }} star(s)</div>
+    <p class="small reviewText">
+      {{review.reviewText}}
+    </p>
+  </div>
+</div>

@@ -1,16 +1,25 @@
-<div class="row">
-  <div class="col-2">
-    <img src="/images/book.png" alt="default book" class="w-100"/>
+<div class="row" *ngIf="book">
+  <div class="col-3">
+    <div class="col-12">
+      <img src="/images/book.png" alt="default book" class="w-100" />
+    </div>
+    <div class="col-12">Pages : {{ book.pagesCount }}</div>
+    <div class="col-12">Publisher : {{ book.publisher }}</div>
+    <div class="col-12">Published : {{ book.publishedAt | date}}</div>
+    <div class="col-12">Rating : {{ book.rating }}</div>
+    <div class="col-12">ISBN : {{ book.isbn }}</div>
+    <div class="col-12" *ngIf="book.website"><a href="{{ book.website }}">Book's website</a></div>
   </div>
-  <div class="col-10">
+  <div class="col-9">
     <div class="row">
-      <label class="col-12 h1">{{book.title}}</label>
-      <label class="col-12 h5">{{book.subtitle}}</label>
-      <p class="col-12">{{book.description}}</p>
+      <label class="col-12 h1">{{ book.title }}</label>
+      <label class="col-12 h5">{{ book.subtitle }}</label>
+      <p class="col-12">{{ book.description }}</p>
     </div>
 
     <app-authors-details [authors]="book.authors"></app-authors-details>
 
-
+    <app-book-reviews [reviews]="book.reviews"></app-book-reviews>
   </div>
 </div>
+<div *ngIf="!book">Loading...</div>
