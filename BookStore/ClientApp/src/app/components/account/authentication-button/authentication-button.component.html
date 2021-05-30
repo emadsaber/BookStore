@@ -1,0 +1,11 @@
+<div *ngIf="(auth.isAuthenticated$ | async)" style="display:contents !important;">
+  <a [routerLink]="['profile']">
+    <img [src]="picture"
+         alt="User's profile picture"
+         class="rounded-circle img-fluid profile-picture" />
+  </a>
+</div>
+<app-login-button *ngIf="(auth.isAuthenticated$ | async) === false"></app-login-button>
+<app-logout-button *ngIf="(auth.isAuthenticated$ | async)"></app-logout-button>
+
+<app-signup-button *ngIf="(auth.isAuthenticated$ | async) === false"></app-signup-button>

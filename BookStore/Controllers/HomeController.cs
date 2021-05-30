@@ -2,6 +2,7 @@
 using BookStore.Core.Utilities.Commands.Implementatinos.Paging;
 using BookStore.Core.Utilities.Commands.Implementations;
 using BookStore.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,6 +32,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost("GetBookDetails")]
+        [Authorize(Policy = "read:bookdetails")]
         public async Task<ApiResponse<BookDto>> GetBookDetails(ApiRequest<Guid> request)
         {
             var book = await booksService.GetBookDetails(request);
