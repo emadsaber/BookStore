@@ -14,7 +14,7 @@ import { BookDetailsComponent } from './components/gallery/book-details/book-det
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { AuthorsDetailsComponent } from './components/gallery/authors-details/authors-details.component';
 import { BookReviewsComponent } from './components/gallery/book-reviews/book-reviews.component';
-import { AuthGuard, AuthModule } from '@auth0/auth0-angular';
+import { AuthGuard, AuthModule, HttpMethod } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment';
 import { LoginButtonComponent } from './components/account//login-button/login-button.component';
 import { SignupButtonComponent } from './components/account/signup-button/signup-button.component';
@@ -23,6 +23,7 @@ import { AuthenticationButtonComponent } from './components/account/authenticati
 import { ProfileComponent } from './components/account/profile/profile.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from '@auth0/auth0-angular'
+import { async } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -48,18 +49,25 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular'
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'details/:id', component: BookDetailsComponent },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: '**', component: PageNotFoundComponent},
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], },
+      { path: '**', component: PageNotFoundComponent },
     ]),
     AuthModule.forRoot({
-      ...env.auth,
+      domain: 'dev-o8ed6rfw.auth0.com',
+      clientId: '1P7T9Sa35TBWQl9KwCDJ9OCdovCZjWj7',
+      audience: 'https://book.store.apis',
+      scope: 'read:bookdetails',
       httpInterceptor: {
-        allowedList: [{
-          uri: `${env.dev.serverUrl}/api/Home/GetBookDetails`,
-          tokenOptions: {
-            audience: "read:bookdetails"
+        allowedList: [
+          {
+            uri: 'api/Home/GetBookDetails',
+            httpMethod: HttpMethod.Post,
+            tokenOptions: {
+              audience: 'https://book.store.apis',
+              scope: 'read:bookdetails'
+            }
           }
-        }]
+        ]
       }
     })
   ],

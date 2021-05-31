@@ -17,10 +17,11 @@ export class AuthenticationButtonComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.authUserSubscription = this.auth.user$.subscribe(x => {
-      console.log(x);
       this.displayName = x.given_name;
       this.picture = x.picture;
     });
+
+    this.auth.error$.subscribe(x => console.log(x));
   }
 
   ngOnDestroy(): void {

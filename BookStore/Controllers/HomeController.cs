@@ -32,7 +32,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPost("GetBookDetails")]
-        [Authorize(Policy = "read:bookdetails")]
+        [Authorize("read:bookdetails")]
         public async Task<ApiResponse<BookDto>> GetBookDetails(ApiRequest<Guid> request)
         {
             var book = await booksService.GetBookDetails(request);

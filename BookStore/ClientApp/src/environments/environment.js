@@ -11,7 +11,8 @@ exports.environment = {
         clientId: auth_config_1.authConfig.clientId,
         domain: auth_config_1.authConfig.domain,
         redirectUri: window.location.origin,
-        audience: auth_config_1.authConfig.audience
+        audience: auth_config_1.authConfig.audience,
+        scope: auth_config_1.authConfig.scope
     },
     dev: {
         serverUrl: auth_config_1.authConfig.serverUrl
