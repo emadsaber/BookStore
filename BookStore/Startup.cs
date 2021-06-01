@@ -69,19 +69,19 @@ namespace BookStore
             }).AddJwtBearer(options =>
             {
                 options.Authority = domain;
-                options.Audience = Configuration["Auth0:ApiIdentifier"];
-                //options.TokenValidationParameters = new TokenValidationParameters
-                //{
-                //    NameClaimType = ClaimTypes.NameIdentifier
-                //};
+                options.Audience = Configuration["Auth0:Audience"];
+                // If the access token does not have a `sub` claim, `User.Identity.Name` will be `null`. Map it to a different claim by setting the NameClaimType below.
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = ClaimTypes.NameIdentifier
+                };
             });
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(
-                    "read:bookdetails",
-                    policy => policy.Requirements.Add(
-                        new HasScopeRequirement("read:bookdetails", domain)));
+                options.AddPolicy("edit:bookdetails", policy => policy.Requirements.Add(new HasScopeRequirement("edit:bookdetails", domain)));
+                options.AddPolicy("create:book", policy => policy.Requirements.Add(new HasScopeRequirement("create:book", domain)));
+                options.AddPolicy("create:review", policy => policy.Requirements.Add(new HasScopeRequirement("create:review", domain)));
             });
 
             services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
