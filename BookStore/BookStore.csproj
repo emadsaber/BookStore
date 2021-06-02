@@ -44,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\api_config.ts" />
     <None Remove="ClientApp\dist\index.html" />
     <None Remove="ClientApp\dist\main-es2015.js" />
     <None Remove="ClientApp\dist\main-es2015.js.map" />

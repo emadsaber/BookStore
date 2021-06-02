@@ -33,8 +33,16 @@ namespace BookStore.Controllers
         }
 
         [HttpPost("GetBookDetails")]
-        [Authorize(SecurityScopes.EDIT_BOOK_DETAILS)]
         public async Task<ApiResponse<BookDto>> GetBookDetails(ApiRequest<Guid> request)
+        {
+            var book = await booksService.GetBookDetails(request);
+
+            return book;
+        }
+
+        [HttpPost("EditBookDetails")]
+        [Authorize(SecurityScopes.EDIT_BOOK_DETAILS)]
+        public async Task<ApiResponse<BookDto>> EditBookDetails(ApiRequest<Guid> request)
         {
             var book = await booksService.GetBookDetails(request);
 

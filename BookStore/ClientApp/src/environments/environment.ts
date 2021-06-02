@@ -1,4 +1,6 @@
-import { authConfig as conf } from '../../auth_config';
+import { HttpMethod } from '@auth0/auth0-angular';
+import { authConfig as authConf } from '../../auth_config';
+import { apiConfig as apiConf } from '../../api_config';
 
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
@@ -7,14 +9,10 @@ import { authConfig as conf } from '../../auth_config';
 export const environment = {
   production: false,
   auth: {
-    clientId: conf.clientId,
-    domain: conf.domain,
+    clientId: authConf.clientId,
+    domain: authConf.domain,
     redirectUri: window.location.origin,
-    audience: conf.audience,
-    scope: conf.scope
-  },
-  dev: {
-    serverUrl: conf.serverUrl
+    audience: authConf.audience,
   }
 };
 
