@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Db", "BookStore.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{249AE15E-7711-4316-85F0-CBF314F81565}"
 	ProjectSection(SolutionItems) = preProject
+		Secrets_sample.json = Secrets_sample.json
 		Tasks.txt = Tasks.txt
 	EndProjectSection
 EndProject
@@ -18,8 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Core", "BookStore
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleData", "SampleData", "{CC712F9A-3A3D-4CA4-9E5F-1905D505F415}"
 	ProjectSection(SolutionItems) = preProject
+		SampleData\AuthorBook.sql = SampleData\AuthorBook.sql
 		SampleData\Authors.sql = SampleData\Authors.sql
+		SampleData\Reviews.sql = SampleData\Reviews.sql
 		SampleData\SampleBooks.sql = SampleData\SampleBooks.sql
+		SampleData\Users.sql = SampleData\Users.sql
 	EndProjectSection
 EndProject
 Global

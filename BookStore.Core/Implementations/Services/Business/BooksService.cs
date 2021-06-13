@@ -38,7 +38,7 @@ namespace BookStore.Core.Implementations.Services.Business
                 return ApiResponse.InvalidRequest<PagedList<BookDto>>();
             }
 
-            var booksPaged = await booksRepo.GetPagedAsync(x => true, 1);
+            var booksPaged = await booksRepo.GetPagedAsync<bool>(x => !x.IsDeleted, 1); //todo : apply page number
             var mappedBooks = Mapper.Map<List<BookDto>>(booksPaged.PagedData);
             var mappedBooksPaged = PagedList<BookDto>.CopyFrom(booksPaged, mappedBooks);
 

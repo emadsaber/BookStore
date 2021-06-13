@@ -35,12 +35,7 @@ namespace BookStore.Core.Contracts.Repositories.Bases
             return query.FirstOrDefault(x => x.Id == id);
         }
 
-        public async Task<List<T>> Get(Expression<Func<T, bool>> filter)
-        {
-            return await this.DbSet.Where(filter).ToListAsync();
-        }
-
-        public async Task<PagedList<T>> GetPagedAsync(Expression<Func<T, bool>> filter, int pageNumber)
+        public async Task<PagedList<T>> GetPagedAsync<TKey>(Expression<Func<T, bool>> filter, int pageNumber, Expression<Func<T, TKey>> orderBy = default, bool? isDescending = true)
         {
             var query = this.DbSet.AsNoTracking().Where(filter);
 
@@ -48,16 +43,67 @@ namespace BookStore.Core.Contracts.Repositories.Bases
             var pageSize = 10;
             var pagesCount = totalCount % pageSize == 0 ? totalCount / pageSize
                                                         : (totalCount / pageSize) + 1;
+            if (orderBy != default)
+            {
+                if (isDescending == true)
+                {
+                    query = query.OrderByDescending(orderBy);
+                }
+                else
+                {
+                    query = query.OrderBy(orderBy);
+                }
+            }
+            else
+            {
+                query = query.OrderByDescending(x => x.CreatedOn);
+            }
+            
+            var data = await query.Skip((pageNumber - 1) * pageSize)
+                                  .Take(pageSize)
+                                  .ToListAsync();
+
+            return PagedList<T>.GetPaged(data, pageNumber, pageSize, pagesCount, totalCount);
+        }
+        public async Task<PagedList<T>> GetPagedAsync<TProperty, TKey>(Expression<Func<T, bool>> filter, int pageNumber, Expression<Func<T, TKey>> orderBy = default, bool? isDescending = true, params Expression<Func<T, TProperty>>[] includes)
+        {
+            var query = this.DbSet.AsNoTracking().Where(filter);
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            var totalCount = query.Count();
+            var pageSize = 10;
+            var pagesCount = totalCount % pageSize == 0 ? totalCount / pageSize
+                                                        : (totalCount / pageSize) + 1;
+            if (orderBy != default)
+            {
+                if (isDescending == true)
+                {
+                    query = query.OrderByDescending(orderBy);
+                }
+                else
+                {
+                    query = query.OrderBy(orderBy);
+                }
+            }
+            else
+            {
+                query = query.OrderByDescending(x => x.CreatedOn);
+            }
+
 
             var data = await query.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
             return PagedList<T>.GetPaged(data, pageNumber, pageSize, pagesCount, totalCount);
         }
-
         public async Task<T> GetAsync<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes)
         {
             var query = this.DbSet.AsQueryable();
-            if(includes != null && includes.Length > 0)
+            if (includes != null && includes.Length > 0)
             {
                 foreach (var include in includes)
                 {
@@ -90,7 +136,18 @@ namespace BookStore.Core.Contracts.Repositories.Bases
             }
             return query.FirstOrDefault(x => x.Id == id);
         }
-
+        public async Task<List<T>> GetAllWithNoTrackingAsync<TProperty>(Expression<Func<T, bool>> filter, params Expression<Func<T, TProperty>>[] includes)
+        {
+            var query = this.DbSet.AsNoTracking();
+            if (includes != null && includes.Length > 0)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+            return await query.Where(filter).ToListAsync();
+        }
         public async Task<T> GetWithNoTrackingAsync<TProperty>(Guid id, params Expression<Func<T, TProperty>>[] includes)
         {
             var query = this.DbSet.AsNoTracking();
@@ -107,7 +164,7 @@ namespace BookStore.Core.Contracts.Repositories.Bases
         public void SoftDelete(Guid id)
         {
             var entity = this.Get<object>(id);
-            if(entity != default)
+            if (entity != default)
             {
                 entity.IsDeleted = true;
             }
@@ -121,7 +178,14 @@ namespace BookStore.Core.Contracts.Repositories.Bases
                 entity.IsDeleted = true;
             }
         }
-
+        public async Task HardDeleteAsync(Guid id)
+        {
+            var entity = await this.GetAsync<object>(id);
+            if (entity != default)
+            {
+                DbSet.Remove(entity);
+            }
+        }
         public void Update(T modifiedEntity)
         {
             this.DbSet.Update(modifiedEntity);
@@ -138,6 +202,11 @@ namespace BookStore.Core.Contracts.Repositories.Bases
                 }
             }
             return await query.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public Task<int> CountAsync(Expression<Func<T, bool>> filter)
+        {
+            return this.DbSet.AsNoTracking().Where(filter).CountAsync();
         }
 
         public T Get(Guid id, params string[] includes)
