@@ -17,6 +17,8 @@ import { DashboardComponent } from './components/gallery/dashboard/dashboard.com
 import { HomeComponent } from './components/home/home.component';
 import { NavMenuComponent } from './components/shared/nav-menu/nav-menu.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { ControlPanelHomeComponent } from './components/admin/control-panel-home/control-panel-home.component';
+import { ControlPanelSidebarComponent } from './components/admin/control-panel-sidebar/control-panel-sidebar.component';
 
 
 
@@ -36,6 +38,8 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     LogoutButtonComponent,
     AuthenticationButtonComponent,
     ProfileComponent,
+    ControlPanelHomeComponent,
+    ControlPanelSidebarComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

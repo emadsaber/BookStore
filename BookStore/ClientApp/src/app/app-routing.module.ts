@@ -8,12 +8,20 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { environment as env } from '../environments/environment';
 import { apiConfig } from '../../api_config';
+import { ControlPanelHomeComponent } from './components/admin/control-panel-home/control-panel-home.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, pathMatch: 'full' },
-    { path: 'details/:id', component: BookDetailsComponent },
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], },
-    { path: '**', component: PageNotFoundComponent }
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'details/:id', component: BookDetailsComponent },
+  {
+    path: 'admin',
+    component: ControlPanelHomeComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], },
+    ]
+  },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

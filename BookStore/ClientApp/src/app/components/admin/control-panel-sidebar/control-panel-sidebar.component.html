@@ -1,0 +1,32 @@
+<div class="d-flex flex-column flex-shrink-1 p-3 bg-light" style="width: 280px;">
+  <span class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark fs-4">
+    <i class="bi bi-gear me-2"></i> Control Panel
+  </span>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a [routerLink]="['profile']" class="nav-link active" aria-current="page" #defaultAction>
+        <i class="bi bi-person-circle"></i>
+        My Profile
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link link-dark">
+        <i class="bi bi-book"></i>
+        My Books
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <i class="bi bi-chat-left-text"></i>
+        My Reviews
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link link-dark">
+        <i class="bi bi-stars"></i>
+        Wishlist
+      </a>
+    </li>
+  </ul>
+</div>

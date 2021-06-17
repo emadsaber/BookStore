@@ -18,7 +18,7 @@ export class AuthenticationButtonComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.authUserSubscription = this.auth.user$.subscribe(x => {
       if (x !== null) {
-        //console.log(x);
+        console.log(x);
         this.displayName = x.given_name ?? x.name;
         this.picture = x.picture;
       } else {

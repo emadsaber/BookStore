@@ -1,6 +1,5 @@
 import { HttpMethod } from '@auth0/auth0-angular';
 import { authConfig as authConf } from '../../auth_config';
-import { apiConfig as apiConf } from '../../api_config';
 
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.

@@ -1,5 +1,5 @@
 <div *ngIf="(auth.isAuthenticated$ | async)" style="display:contents !important;">
-  <a [routerLink]="['profile']">
+  <a [routerLink]="['admin/profile']">
     <img [src]="picture"
          alt="User's profile picture"
          class="rounded-circle img-fluid profile-picture" />

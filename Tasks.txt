@@ -10,6 +10,9 @@
 		- Add AppSettings (DefaultPageSize)
 		- Add images for books and users (how to store them with data (FileStream, or binary))
 		- Create the rating UI control
-		- Create Repository includes with all Get methods
-		- Authentication and Authorization (Auth0, ...)
+[OK]	- Create Repository includes with all Get methods
+[OK]	- Authentication and Authorization (Auth0, ...)
 		- Sign in with Google, Github, Facebook , LinkedIn
+		- Admin control panel (Add Book, Edit Book, View Reviews, Reply to reviews)
+		- Complete profile page [with Auth0 management API]
+		- Edit review, reply to review
