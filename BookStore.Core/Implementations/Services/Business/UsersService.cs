@@ -36,21 +36,24 @@ namespace BookStore.Core.Implementations.Services.Business
 
             var isExist = await usersRepository.CountAsync(x => x.AuthUserId == data.AuthUserId) > 0;
             
-            var user = Mapper.Map<User>(data);
-            if (user == null)
-            {
-                return ApiResponse.FailureResponse<bool>("CreateOrUpdate : Failed map before update");
-            }
+            
 
             if (isExist)
             {
                 //update user details
                 var existing = usersRepository.GetByAuthUserId(authUserId: data.AuthUserId);
+                
+                existing = Mapper.Map(data, existing);
 
-                usersRepository.Update(user);
+                usersRepository.Update(existing);
             }
             else
             {
+                var user = Mapper.Map<User>(data);
+                if (user == null)
+                {
+                    return ApiResponse.FailureResponse<bool>("CreateOrUpdate : Failed map before update");
+                }
                 //create user
                 usersRepository.Add(user);
             }
