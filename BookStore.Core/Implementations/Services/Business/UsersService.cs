@@ -36,8 +36,6 @@ namespace BookStore.Core.Implementations.Services.Business
 
             var isExist = await usersRepository.CountAsync(x => x.AuthUserId == data.AuthUserId) > 0;
             
-            
-
             if (isExist)
             {
                 //update user details

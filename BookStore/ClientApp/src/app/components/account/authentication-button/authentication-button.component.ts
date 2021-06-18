@@ -24,22 +24,6 @@ export class AuthenticationButtonComponent implements OnInit, OnDestroy {
 
         this.displayName = x.given_name ?? x.name;
         this.picture = x.picture;
-
-        let userDto: AuthUserDto = {
-          email: x.email,
-          email_verified: x.email_verified,
-          name: x.name,
-          nickname: x.nickname,
-          picture: x.picture,
-          sub: x.sub
-        };
-
-        this.usersService.createOrUpdateUser(userDto).subscribe(x => {
-          if (!x.success) {
-            console.error(x.getErrorsString());
-            console.error(x);
-          }
-        })
       } else {
         console.info("---[ No Logged in user ]---");
       }
