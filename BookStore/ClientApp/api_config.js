@@ -12,6 +12,12 @@ exports.apiConfig = {
                 scope: 'edit:bookdetails'
             }
         }
+    },
+    users: {
+        createOrUpdate: {
+            uri: 'api/Users/CreateOrUpdate',
+            httpMethod: "POST" /* Post */
+        }
     }
 };
 //# sourceMappingURL=api_config.js.map

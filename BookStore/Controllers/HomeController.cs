@@ -4,11 +4,8 @@ using BookStore.Core.Utilities.Commands.Implementations;
 using BookStore.Models.DTOs;
 using BookStore.Security;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BookStore.Controllers

@@ -14,10 +14,13 @@ namespace BookStore.Db.Context.Configurations
             builder.Property(x => x.Id)
                    .HasDefaultValueSql("(NEWID())");
 
-            builder.Property(x => x.Title).HasMaxLength(10);
+            builder.Property(x => x.AuthUserId).IsRequired().HasMaxLength(70);
+            builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Nickname).HasMaxLength(50);
+            builder.Property(x => x.Email).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.PictureUrl).HasMaxLength(300);
             builder.Property(x => x.FirstName).IsRequired().HasMaxLength(100);
             builder.Property(x => x.LastName).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.PasswordHash).IsRequired().HasMaxLength(300);
             builder.Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("(GETDATE())");
             builder.Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
 

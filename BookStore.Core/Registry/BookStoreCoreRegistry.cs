@@ -41,6 +41,7 @@ namespace BookStore.Core.Registry
         private static void RegisterBusinessServices(IServiceCollection services)
         {
             services.AddScoped<IBooksService, BooksService>();
+            services.AddScoped<IUsersService, UsersService>();
         }
 
         private static void RegisterMappings(IServiceCollection services)

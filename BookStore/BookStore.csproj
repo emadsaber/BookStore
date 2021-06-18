@@ -72,6 +72,7 @@
     <None Remove="ClientApp\src\app\models\dtos\BookDto.ts" />
     <None Remove="ClientApp\src\app\models\dtos\ReviewDto.ts" />
     <None Remove="ClientApp\src\app\models\dtos\UserDto.ts" />
+    <None Remove="ClientApp\src\app\models\dtos\users\AuthUserDto.ts" />
     <None Remove="ClientApp\src\app\models\ErrorItem.ts" />
   </ItemGroup>
 

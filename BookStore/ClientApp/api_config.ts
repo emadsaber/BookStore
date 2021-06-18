@@ -11,5 +11,11 @@ export const apiConfig = {
         scope: 'edit:bookdetails'
       }
     }
+  },
+  users: {
+    createOrUpdate: {
+      uri: 'api/Users/CreateOrUpdate',
+      httpMethod: HttpMethod.Post
+    }
   }
 }

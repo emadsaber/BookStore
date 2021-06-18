@@ -1,7 +1,8 @@
 ﻿using BookStore.Core.Utilities.Commands.Implementatinos;
-using System;
+using FluentValidation.Results;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace BookStore.Core.Utilities.Commands.Implementations
 {
@@ -9,7 +10,10 @@ namespace BookStore.Core.Utilities.Commands.Implementations
     {
         #region props
         
+        [JsonPropertyName("success")]
         public bool Success { get; set; }
+        
+        [JsonPropertyName("errors")]
         public ErrorItemCollection Errors { get; set; }
 
         #endregion
@@ -27,6 +31,19 @@ namespace BookStore.Core.Utilities.Commands.Implementations
         public static ApiResponse<T> FailureResponse<T>(params string[] errors)
         {
             return new ApiResponse<T>(default, success: false, ErrorItemCollection.Create(errors));
+        }
+
+        public static ApiResponse<T> FailureResponse<T>(List<ValidationFailure> errors)
+        {
+            if (errors == default) return default;
+
+            var projected = errors.Select(x => $"Error Code: [{x.ErrorCode}], AttemptedValue: [{x.AttemptedValue?.ToString()}, Message: [{x.ErrorMessage}]]").ToArray();
+
+            return new ApiResponse<T>(default, success: false, ErrorItemCollection.Create(projected));
+        }
+        public static ApiResponse<T> FailureResponse<T>(ValidationResult result)
+        {
+            return FailureResponse<T>(result?.Errors);
         }
         public static ApiResponse<T> FailureResponse<T>()
         {
@@ -54,6 +71,7 @@ namespace BookStore.Core.Utilities.Commands.Implementations
 
         #region props
 
+        [JsonPropertyName("data")]
         public T Data { get; set; }
 
         #endregion

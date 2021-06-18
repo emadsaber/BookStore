@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using BookStore.Models.Domain;
 using BookStore.Models.DTOs;
+using BookStore.Models.DTOs.Users;
+using BookStore.Core.Utilities.Commands.Helpers;
 
 namespace BookStore.Core.Mappings
 {
@@ -15,8 +17,11 @@ namespace BookStore.Core.Mappings
             this.CreateMap<Review, ReviewDto>().ReverseMap();
             this.CreateMap<UserDto, User>()
                 .ReverseMap()
-                .ForMember(x => x.FullName, y => y.MapFrom( z => $"{z.FirstName} {z.LastName}"))
-                .ForMember(x => x.FullNameWithTitle, y => y.MapFrom( z => $"{z.Title} {z.FirstName} {z.LastName}"));
+                .ForMember(x => x.FullName, y => y.MapFrom(z => $"{z.FirstName} {z.LastName}"))
+                .ForMember(x => x.FullNameWithTitle, y => y.MapFrom(z => $"{z.FirstName} {z.LastName}"));
+            this.CreateMap<AuthUserDto, User>()
+                .ForMember(x => x.FirstName, y => y.MapFrom(z => (z.Name ?? z.Nickname).GetFirstSyllable() ?? "Unknown"))
+                .ForMember(x => x.LastName, y => y.MapFrom(z => (z.Name ?? z.Nickname).GetSecondSyllable() ?? "Unknown"));
         }
     }
 }

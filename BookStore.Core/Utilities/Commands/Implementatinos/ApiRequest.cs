@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Text.Json.Serialization;
 
 namespace BookStore.Core.Utilities.Commands.Implementations
 {
@@ -7,7 +9,10 @@ namespace BookStore.Core.Utilities.Commands.Implementations
         public ApiRequest() { }
         #region props
 
+        [JsonPropertyName("requestedAt")]
         public DateTime RequestedAt { get; set; }
+        
+        [JsonPropertyName("userId")]
         public Guid? UserId { get; set; }
 
         #endregion
@@ -50,7 +55,8 @@ namespace BookStore.Core.Utilities.Commands.Implementations
         #endregion
 
         #region props
-        
+
+        [JsonPropertyName("data")]
         public T Data { get; set; }
         
         #endregion
