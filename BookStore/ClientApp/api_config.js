@@ -17,6 +17,10 @@ exports.apiConfig = {
         createOrUpdate: {
             uri: 'api/Users/CreateOrUpdate',
             httpMethod: "POST" /* Post */
+        },
+        getUser: {
+            uri: 'api/Users/GetUserByAuthUserId',
+            httpMethod: "POST" /* Post */
         }
     }
 };

@@ -6,6 +6,7 @@ using BookStore.Core.Utilities.Commands.Implementations;
 using BookStore.Core.Validations;
 using BookStore.Db.Context;
 using BookStore.Models.Domain;
+using BookStore.Models.DTOs;
 using BookStore.Models.DTOs.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -26,6 +27,7 @@ namespace BookStore.Core.Implementations.Services.Business
         #endregion
 
         #region IUsersService
+        
         public async Task<ApiResponse<bool>> CreateOrUpdate(AuthUserDto data)
         {
             var validateResult = new AuthUserValidator().Validate(data);
@@ -39,7 +41,7 @@ namespace BookStore.Core.Implementations.Services.Business
             if (isExist)
             {
                 //update user details
-                var existing = usersRepository.GetByAuthUserId(authUserId: data.AuthUserId);
+                var existing = await usersRepository.GetByAuthUserIdAsync(authUserId: data.AuthUserId);
                 
                 existing = Mapper.Map(data, existing);
 
@@ -59,7 +61,26 @@ namespace BookStore.Core.Implementations.Services.Business
             var res = await SaveAsync();
 
             return res ? ApiResponse.SuccessResponse(res) : ApiResponse.FailureResponse(res);
-        } 
+        }
+
+        public async Task<ApiResponse<UserDto>> GetUserByAuthUserId(string data)
+        {
+            if (string.IsNullOrEmpty(data))
+            {
+                return ApiResponse.FailureResponse<UserDto>("Invalid auth user id");
+            }
+
+            var user = await usersRepository.GetByAuthUserIdAsync(data, isTracked: false);
+            if (user == null)
+            {
+                return ApiResponse.FailureResponse<UserDto>("No user foud matching this id");
+            }
+
+            var mappedUser = Mapper.Map<UserDto>(user);
+
+            return mappedUser != null ? ApiResponse.SuccessResponse(mappedUser)
+                                      : ApiResponse.FailureResponse<UserDto>("Failed to map");
+        }
 
         #endregion
     }

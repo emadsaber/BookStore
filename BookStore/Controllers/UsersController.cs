@@ -1,5 +1,6 @@
 ﻿using BookStore.Core.Contracts.Services.Business;
 using BookStore.Core.Utilities.Commands.Implementations;
+using BookStore.Models.DTOs;
 using BookStore.Models.DTOs.Users;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -26,6 +27,19 @@ namespace BookStore.Controllers
 
             var response = await usersService.CreateOrUpdate(request.Data);
 
+            return response;
+        }
+
+        [HttpPost("GetUserByAuthUserId")]
+        public async Task<ApiResponse<UserDto>> GetUserByAuthUserId(ApiRequest<string> request)
+        {
+            if (!request.Validate())
+            {
+                return ApiResponse.FailureResponse<UserDto>("Invalid Object body");
+            }
+
+            var response = await usersService.GetUserByAuthUserId(request.Data);
+            
             return response;
         }
     }

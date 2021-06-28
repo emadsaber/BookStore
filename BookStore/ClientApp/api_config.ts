@@ -16,6 +16,10 @@ export const apiConfig = {
     createOrUpdate: {
       uri: 'api/Users/CreateOrUpdate',
       httpMethod: HttpMethod.Post
+    },
+    getUser: {
+      uri: 'api/Users/GetUserByAuthUserId',
+      httpMethod: HttpMethod.Post
     }
   }
 }

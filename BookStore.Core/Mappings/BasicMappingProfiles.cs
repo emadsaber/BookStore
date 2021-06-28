@@ -15,10 +15,7 @@ namespace BookStore.Core.Mappings
                 .ReverseMap()
                 .ForMember(x => x.FullName, y => y.MapFrom(s => $"{s.FirstName} {s.LastName}"));
             this.CreateMap<Review, ReviewDto>().ReverseMap();
-            this.CreateMap<UserDto, User>()
-                .ReverseMap()
-                .ForMember(x => x.FullName, y => y.MapFrom(z => $"{z.FirstName} {z.LastName}"))
-                .ForMember(x => x.FullNameWithTitle, y => y.MapFrom(z => $"{z.FirstName} {z.LastName}"));
+            this.CreateMap<UserDto, User>().ReverseMap();
             this.CreateMap<AuthUserDto, User>()
                 .ForMember(x => x.FirstName, y => y.MapFrom(z => (z.Name ?? z.Nickname).GetFirstSyllable() ?? "Unknown"))
                 .ForMember(x => x.LastName, y => y.MapFrom(z => (z.Name ?? z.Nickname).GetSecondSyllable() ?? "Unknown"));

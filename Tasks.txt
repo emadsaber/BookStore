@@ -16,3 +16,11 @@
 		- Admin control panel (Add Book, Edit Book, View Reviews, Reply to reviews)
 		- Complete profile page [with Auth0 management API]
 		- Edit review, reply to review
+[]	- split components into modules
+[]	- Add canDeactivate on edit routes, alert before deactivate
+[] 	- make edit forms reactive
+[] 	- create validators in shared module
+[]	- create rating control in shraed module
+[]	- check to find if passing user id is needed in the ApiRequest model, or it can be replaced bt auth token
+[]	- Find library to make popups in angular
+[]	- Work with mocks in angular app for faster response
