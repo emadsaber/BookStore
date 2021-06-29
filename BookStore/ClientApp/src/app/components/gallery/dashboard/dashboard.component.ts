@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
 import { BookDto } from '../../../models/dtos/BookDto';
 import { BooksService } from '../../../services/books.service';
 
@@ -16,7 +17,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   getDashboardBooksSubscription: Subscription;
 
   constructor(private booksService: BooksService) { }
-    
+
 
   ngOnInit(): void {
     this.getDashboardBooksSubscription = this.booksService.getDashboardBooks().subscribe(r => {
@@ -25,7 +26,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.pageNumber = r.data.pageNumber;
         this.pagesCount = r.data.pagesCount;
       } else {
-        console.error(`error getting dashboard books : success : ${r.getErrorsString()}`);
+        console.error(`error getting dashboard books : success : ${ApiResponseHelper.getErrorsString(r)}`);
       }
     });
   }

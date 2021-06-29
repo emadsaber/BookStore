@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
+import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
 import { AuthUserDto } from '../../../models/dtos/users/AuthUserDto';
 import { UsersService } from '../../../services/users.service';
 
@@ -22,7 +23,7 @@ export class SignupButtonComponent implements OnInit, OnDestroy {
     this.createUpdateSubscription?.unsubscribe();
     this.authUserSubscription?.unsubscribe();
   }
-  signUp(){
+  signUp() {
     this.auth.loginWithPopup({
       screen_hint: "signup"
     }).subscribe(() => {
@@ -39,9 +40,9 @@ export class SignupButtonComponent implements OnInit, OnDestroy {
         //create a user in database
         this.createUpdateSubscription = this.usersService.createOrUpdateUser(userDto).subscribe(x => {
           if (!x.success) {
-            console.error(x.getErrorsString());
+            console.error(ApiResponseHelper.getErrorsString(x));
             console.error(x);
-            window.alert(x.getErrorsString());
+            window.alert(ApiResponseHelper.getErrorsString(x));
           }
         });
       });

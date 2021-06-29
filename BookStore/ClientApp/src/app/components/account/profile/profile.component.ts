@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
+import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
 import { UserDto } from '../../../models/dtos/UserDto';
 import { UsersService } from '../../../services/users.service';
 
@@ -15,9 +16,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   userDto: UserDto;
 
   constructor(public auth: AuthService, private usersService: UsersService) { }
-  
+
   ngOnInit(): void {
-    
+
     this.authSubscription = this.auth.user$.subscribe(x => {
 
       this.getUserSubscription = this.usersService.getUserByAuthUserId(x.sub).subscribe(res => {
@@ -25,10 +26,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
           console.log(res.data);
           this.userDto = res.data;
         } else {
-          console.error(res.getErrorsString());
+          console.error(ApiResponseHelper.getErrorsString(res));
         }
       })
-      
+
     })
   }
 

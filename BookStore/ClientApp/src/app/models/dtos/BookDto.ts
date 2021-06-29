@@ -4,14 +4,14 @@ import { ReviewDto } from "./ReviewDto";
 
 
 export class BookDto {
-  id: Guid;
+  id: string;
   title: string;
   subtitle: string;
   description: string;
   rating: number;
   isbn: string;
   publisher: string;
-  publishedAt: Date;
+  publishedAt: string;
   website: string;
   pagesCount: number;
   authors: AuthorDto[];

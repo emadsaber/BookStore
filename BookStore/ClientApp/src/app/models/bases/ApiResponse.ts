@@ -1,14 +1,16 @@
-import { Guid } from "guid-typescript";
 import { ErrorItem } from "../bases/ErrorItem";
 
-export class ApiResponse<T> {
+export interface ApiResponse<T> {
   data: T;
   success: boolean;
   errors: ErrorItem[];
+}
 
-  getErrorsString(): string {
-    if (this.errors === null || this.errors === undefined) return null;
+export class ApiResponseHelper {
 
-    return this.errors.join('-');
+  static getErrorsString<T>(response: ApiResponse<T>): string {
+    if (response.errors === null || response.errors === undefined) return null;
+
+    return response.errors.join('-');
   }
 }

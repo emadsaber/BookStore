@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
+import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
 import { BookDto } from '../../../models/dtos/BookDto';
 import { BooksService } from '../../../services/books.service';
 
@@ -17,8 +18,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   getBookSubscription: Subscription;
 
   constructor(private route: ActivatedRoute, private booksService: BooksService,
-private auth: AuthService  ) { }
-    
+    private auth: AuthService) { }
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get("id");
@@ -28,7 +29,7 @@ private auth: AuthService  ) { }
       if (x.success) {
         this.book = x.data;
       } else {
-        console.error(x.getErrorsString());
+        console.error(ApiResponseHelper.getErrorsString(x));
       }
     });
 
