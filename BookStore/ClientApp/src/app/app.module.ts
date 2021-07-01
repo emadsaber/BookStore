@@ -4,49 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginButtonComponent } from './components/account//login-button/login-button.component';
-import { AuthenticationButtonComponent } from './components/account/authentication-button/authentication-button.component';
-import { LogoutButtonComponent } from './components/account/logout-button/logout-button.component';
-import { ProfileComponent } from './components/account/profile/profile.component';
-import { SignupButtonComponent } from './components/account/signup-button/signup-button.component';
-import { AuthorsDetailsComponent } from './components/gallery/authors-details/authors-details.component';
-import { BookDetailsComponent } from './components/gallery/book-details/book-details.component';
-import { BookReviewsComponent } from './components/gallery/book-reviews/book-reviews.component';
-import { DashboardBookComponent } from './components/gallery/dashboard-book/dashboard-book.component';
-import { DashboardComponent } from './components/gallery/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavMenuComponent } from './components/shared/nav-menu/nav-menu.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { ControlPanelHomeComponent } from './components/admin/control-panel-home/control-panel-home.component';
-import { ControlPanelSidebarComponent } from './components/admin/control-panel-sidebar/control-panel-sidebar.component';
-
-
+import { AccountModule } from './account/account.module';
+import { AdminModule } from './admin/admin.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    DashboardComponent,
-    DashboardBookComponent,
-    BookDetailsComponent,
     PageNotFoundComponent,
-    AuthorsDetailsComponent,
-    BookReviewsComponent,
-    LoginButtonComponent,
-    SignupButtonComponent,
-    LogoutButtonComponent,
-    AuthenticationButtonComponent,
-    ProfileComponent,
-    ControlPanelHomeComponent,
-    ControlPanelSidebarComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    
-    AppRoutingModule
+    AppRoutingModule,
+    AccountModule,
+    AdminModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
