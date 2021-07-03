@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ControlPanelSidebarComponent } from './components/control-panel-sidebar/control-panel-sidebar.component';
 import { ControlPanelHomeComponent } from './components/control-panel-home/control-panel-home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RouterModule, Routes, ɵangular_packages_router_router_o } from '@angular/router';
 import { AuthGuard } from '@auth0/auth0-angular';
@@ -30,7 +30,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [RouterModule]
 })

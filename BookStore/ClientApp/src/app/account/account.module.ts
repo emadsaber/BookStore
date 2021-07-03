@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     HttpClientModule,
     FormsModule,
   ],

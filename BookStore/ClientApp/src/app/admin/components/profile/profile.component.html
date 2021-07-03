@@ -1,14 +1,23 @@
-<div *ngIf="userDto">
+<!-- <div *ngIf="userDto">
   <div class="row align-items-center profile-header">
     <div class="col-md-2 mb-3">
-      <img [src]="userDto.pictureUrl"
-           alt="User's profile picture"
-           class="rounded-circle img-fluid profile-picture" />
+      <img [src]="userDto.pictureUrl" alt="User's profile picture" class="rounded-circle img-fluid profile-picture" />
     </div>
-    <div class="col-md text-center text-md-left">
-      <h2>{{ userDto.name }}</h2>
-      <p class="lead text-muted">{{ userDto.email }}</p>
+    <div class="col-md text-left text-md-left">
+      <input type="text" />
     </div>
   </div>
+</div> -->
 
-</div>
+<form (ngSubmit)="onSubmit()" [formGroup]="formControls" novalidate>
+  <div class="form-group row mb-2">
+    <label class="col-md-2 col-form-label" for="firstName">First Name</label>
+    <div class="col-md-8">
+      <input class="form-control" id="firstName" type="text" placeholder="First Name (required)"
+        formControlName="firstName" [ngClass]="{'is-invalid': !formControls.get('firstName').valid }" />
+      <span class="invalid-feedback">
+        {{displayMessage.firstName}}
+      </span>
+    </div>
+  </div>
+</form>
