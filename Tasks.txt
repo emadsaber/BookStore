@@ -24,3 +24,4 @@
 []	- check to find if passing user id is needed in the ApiRequest model, or it can be replaced bt auth token
 []	- Find library to make popups in angular
 []	- Work with mocks in angular app for faster response
+[] 	- Localize application using i18n
