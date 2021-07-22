@@ -2,10 +2,10 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
-import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
-import { GenericValidator } from 'src/app/shared/generic-validator';
+import { ApiResponseHelper } from '../../../models/bases/ApiResponse';
 import { UserDto } from '../../../models/dtos/UserDto';
 import { UsersService } from '../../../services/users.service';
+import { GenericValidator } from '../../../shared/generic-validator';
 
 @Component({
   selector: 'app-profile',

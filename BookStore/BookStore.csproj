@@ -64,16 +64,16 @@
     <None Remove="ClientApp\dist\vendor-es2015.js.map" />
     <None Remove="ClientApp\dist\vendor-es5.js" />
     <None Remove="ClientApp\dist\vendor-es5.js.map" />
-    <None Remove="ClientApp\src\app\models\bases\ApiRequest.ts" />
-    <None Remove="ClientApp\src\app\models\bases\ApiRequestHelper.ts" />
-    <None Remove="ClientApp\src\app\models\bases\ApiResponse.ts" />
-    <None Remove="ClientApp\src\app\models\bases\PagedList.ts" />
-    <None Remove="ClientApp\src\app\models\dtos\AuthorDto.ts" />
-    <None Remove="ClientApp\src\app\models\dtos\BookDto.ts" />
-    <None Remove="ClientApp\src\app\models\dtos\ReviewDto.ts" />
-    <None Remove="ClientApp\src\app\models\dtos\UserDto.ts" />
-    <None Remove="ClientApp\src\app\models\dtos\users\AuthUserDto.ts" />
-    <None Remove="ClientApp\src\app\models\ErrorItem.ts" />
+    <None Remove="ClientApp\src\app\modules\models\bases\ApiRequest.ts" />
+    <None Remove="ClientApp\src\app\modules\models\bases\ApiRequestHelper.ts" />
+    <None Remove="ClientApp\src\app\modules\models\bases\ApiResponse.ts" />
+    <None Remove="ClientApp\src\app\modules\models\bases\PagedList.ts" />
+    <None Remove="ClientApp\src\app\modules\models\dtos\AuthorDto.ts" />
+    <None Remove="ClientApp\src\app\modules\models\dtos\BookDto.ts" />
+    <None Remove="ClientApp\src\app\modules\models\dtos\ReviewDto.ts" />
+    <None Remove="ClientApp\src\app\modules\models\dtos\UserDto.ts" />
+    <None Remove="ClientApp\src\app\modules\models\dtos\users\AuthUserDto.ts" />
+    <None Remove="ClientApp\src\app\modules\models\ErrorItem.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -86,7 +86,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="ClientApp\src\app\modules\services\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

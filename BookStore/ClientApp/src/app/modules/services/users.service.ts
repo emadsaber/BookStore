@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { apiConfig } from '../../../api_config';
+import { apiConfig } from '../../../../api_config';
 import { ApiRequest } from '../models/bases/ApiRequest';
 import { ApiRequestHelper } from '../models/bases/ApiRequestHelper';
 import { ApiResponse } from '../models/bases/ApiResponse';
 import { UserDto } from '../models/dtos/UserDto';
 import { AuthUserDto } from '../models/dtos/users/AuthUserDto';
-import { environment as env } from 'src/environments/environment';
+import { environment as env } from '../../../environments/environment';
 import { UsersMock } from '../mocks/users.mock';
 
 const httpOptions = {

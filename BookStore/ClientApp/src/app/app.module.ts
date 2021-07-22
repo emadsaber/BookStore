@@ -5,11 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { NavMenuComponent } from './components/shared/nav-menu/nav-menu.component';
-import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { AccountModule } from './account/account.module';
-import { AdminModule } from './admin/admin.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AccountModule } from './modules/account/account.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [

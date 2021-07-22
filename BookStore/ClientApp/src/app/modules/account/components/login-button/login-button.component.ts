@@ -1,16 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { AuthService } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
-import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
+import { ApiResponseHelper } from '../../../models/bases/ApiResponse';
 import { AuthUserDto } from '../../../models/dtos/users/AuthUserDto';
 import { UsersService } from '../../../services/users.service';
 
 @Component({
-  selector: 'app-signup-button',
-  templateUrl: './signup-button.component.html',
-  styleUrls: ['./signup-button.component.css']
+  selector: 'app-login-button',
+  templateUrl: './login-button.component.html',
+  styleUrls: ['./login-button.component.css']
 })
-export class SignupButtonComponent implements OnInit, OnDestroy {
+export class LoginButtonComponent implements OnInit, OnDestroy {
 
   constructor(private auth: AuthService, private usersService: UsersService) { }
 
@@ -23,10 +24,8 @@ export class SignupButtonComponent implements OnInit, OnDestroy {
     this.createUpdateSubscription?.unsubscribe();
     this.authUserSubscription?.unsubscribe();
   }
-  signUp() {
-    this.auth.loginWithPopup({
-      screen_hint: "signup"
-    }).subscribe(() => {
+  loginWithRedirect() {
+    this.auth.loginWithPopup().subscribe(() => {
       this.authUserSubscription = this.auth.user$.subscribe(x => {
         let userDto: AuthUserDto = {
           email: x.email,

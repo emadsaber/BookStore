@@ -7,7 +7,7 @@ import { ApiRequestHelper } from '../models/bases/ApiRequestHelper';
 import { ApiResponse } from '../models/bases/ApiResponse';
 import { PagedList } from '../models/bases/PagedList';
 import { BookDto } from '../models/dtos/BookDto';
-import { environment as env } from '../../environments/environment';
+import { environment as env } from '../../../environments/environment';
 import { BooksMocks } from '../mocks/books.mock';
 
 const httpOptions = {

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
+import { ApiResponseHelper } from '../../../models/bases/ApiResponse';
 import { BookDto } from '../../../models/dtos/BookDto';
 import { BooksService } from '../../../services/books.service';
 

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Subscription } from 'rxjs';
-import { ApiResponseHelper } from 'src/app/models/bases/ApiResponse';
+import { ApiResponseHelper } from '../../../models/bases/ApiResponse';
 import { BookDto } from '../../../models/dtos/BookDto';
 import { BooksService } from '../../../services/books.service';
 
